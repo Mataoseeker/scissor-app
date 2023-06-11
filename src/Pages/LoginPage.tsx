@@ -1,6 +1,6 @@
 import { UserAuth } from "../Context/AuthContext";
 import line from "./Images/line.png"
-import or from "./Images/Or.png"
+import or from "./Images/or.png"
 import Header from "../Components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";

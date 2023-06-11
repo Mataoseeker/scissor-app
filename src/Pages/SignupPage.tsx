@@ -1,6 +1,6 @@
 import NavBar from "../Components/NavBar";
 import line from "./Images/line.png"
-import or from "./Images/Or.png"
+import or from "./Images/or.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";

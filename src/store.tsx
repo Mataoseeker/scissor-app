@@ -74,3 +74,29 @@
 // }
  
 // export default NavBar
+
+
+    //from dashboard
+
+ {/* <Link to="/dashboard"> <img src={ Logo } alt="logo" 
+               className="mt-7 ml-20"/> </Link>
+
+                <Link to="/dashboard" className="mt-8 text-lg ml-10   text-blue-800
+            hover:text-blue-900">Dashboard</Link>
+
+            <Link to="/dashboard" className="mt-8 text-lg ml-10    text-blue-800
+            hover:text-blue-900">Links</Link>
+
+            <Link to="/dashboard" className="mt-8 text-lg ml-10    text-blue-800
+            hover:text-blue-900">QR Codes</Link>
+
+            <Link to="/dashboard" className="mt-8 text-lg ml-10   text-blue-800
+            hover:text-blue-900">Custom Links</Link>
+
+            <Link to="/dashboard" className="mt-8 text-lg ml-10    text-blue-800
+            hover:text-blue-900">Settings</Link>
+               
+            <Link to="/urlshortener"> <button className="bg-blue-800
+                 hover:bg-blue-700 text-white ml-10 mt-5 px-5 py-3 border-none rounded-lg">
+                    Create new
+            </button> </Link> */}

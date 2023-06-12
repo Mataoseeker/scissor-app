@@ -63,9 +63,9 @@ const navigate = useNavigate();
         </div>
 
             <div className="flex row md:ml-96 ml-3 mt-8">
-            <img src={line} alt="line" className=" md:m-5 m-2 w-36"/>
+            <img src={line} alt="line" className=" md:m-5 m-2 w-36 md:w-44"/>
             <img src={or} alt="or" className="md:m-5 m-2"/>
-            <img src={line} alt="line" className="md:m-5 m-2 w-36"/>
+            <img src={line} alt="line" className="md:m-5 m-2 w-36 md:w-44"/>
             </div>
 
     <div className="md:ml-96 ml-10">
@@ -123,8 +123,7 @@ const navigate = useNavigate();
       Forgot your password?</Link> <br />
 
       <button className="mt-2 md:w-full md:max-w-md cursor-pointer
-      md:ml-10 px-32 md:px-7 py-3 border text-white hover:bg-white
-       hover:border-blue-700hover:text-black text-sm
+      md:ml-10 px-32 md:px-7 py-3 border text-white
        bg-blue-700 rounded-lg md:rounded-full"> Log In</button>
 
      

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { UserAuth } from "../Context/AuthContext";
+import { signInWithGoogle } from "../Context/AuthContext";
 
 type Inputs = {
     username: string,
@@ -63,7 +64,7 @@ const [retypePassword, setRetypePassword] = useState('')
         <h2 className="font-serif text-2xl md:mt-20 mt-10 md:ml-96">Sign Up with: </h2>
             <button type="submit" className="bg-blue-950 text-white py-3 px-4
             border rounded-lg md:ml-96  hover:bg-white hover:border-blue-700
-             hover:text-black">Google</button>
+             hover:text-black" onClick={signInWithGoogle}>Google</button>
 
             <button type="submit" className="bg-blue-950 text-white py-3 px-5
             border rounded-lg m-2 hover:bg-white hover:border-blue-700

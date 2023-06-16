@@ -79,11 +79,11 @@ const HomePage = () => {
                             className="mt-20 w-full max-w-md md:ml-96  px-7 py-3 border
                              border-blue-700 rounded-xl text-blue-600
                             "/>
-<div className="md:mt-8 mt-5">
+<div className="md:mt-8 mt-3">
 
 <select placeholder="Customize domain"
     className="md:ml-96 py-3 md:m-3 m-1 md:px-7  px-16 border text-blue-600
-     border-blue-700 rounded-xl " disabled>
+     border-blue-700 rounded-xl  " >
         
          <option value="">Customize domain</option>
         <option value="">Scissors</option>
@@ -96,7 +96,7 @@ const HomePage = () => {
     <Link to="/login"> <img src={Button} alt="button"
      className="md:ml-96 w-full max-w-md mt-5 " /> </Link> 
 
-     <p className="text-center mt-8">By clicking TrimURL, I agree to the 
+     <p className="text-center mt-10">By clicking TrimURL, I agree to the 
         <b> Terms of Service</b>, <b>Privacy Policy</b> and Use of Cookies.</p> 
         </div>
     </form>

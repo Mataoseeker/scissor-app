@@ -5,6 +5,9 @@ import Header from "../Components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+import { signInWithGoogle } from "../Context/AuthContext";
+
+
 
 type Inputs = {
     email: string,
@@ -12,9 +15,11 @@ type Inputs = {
   };
 
 
-const LoginPage = () => {
 
+const LoginPage = () => {
+  
 const { signIn } = UserAuth()
+
 
 const navigate = useNavigate();
   const [email, setEmail] = useState('')
@@ -36,6 +41,7 @@ const navigate = useNavigate();
   
     try {
       await signIn(email, password);
+
       navigate("/dashboard")
     }
     catch (err) {
@@ -46,6 +52,17 @@ const navigate = useNavigate();
    
   };
 
+  const handleGoogleSignIn = async() => {
+    try { 
+       signInWithGoogle();
+      navigate("/dashboard")
+    }
+    catch (err) {
+      console.log(err);
+    }
+
+  }
+
 
     return ( 
         <div className="login-page">
@@ -55,7 +72,7 @@ const navigate = useNavigate();
           <h2 className="font-serif text-2xl md:mt-20 mt-10 md:ml-96">Login In with: </h2>
             <button type="submit" className="bg-blue-950 text-white py-3 px-4
             border rounded-lg md:ml-96 mt-5 hover:bg-white hover:border-blue-700
-             hover:text-black">Google</button>
+             hover:text-black" onClick={handleGoogleSignIn}>Google</button>
 
             <button type="submit" className="bg-blue-950 text-white py-3 px-5
             border rounded-lg m-2 hover:bg-white hover:border-blue-700

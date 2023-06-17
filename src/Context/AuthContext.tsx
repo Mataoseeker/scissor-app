@@ -14,8 +14,7 @@ export const provider = new GoogleAuthProvider();
 export const signInWithGoogle = () => {
    
     signInWithPopup(auth, provider).then((result) => {
-        const name = result.user.displayName
-        return name;
+        console.log(result)
     })  
 
     

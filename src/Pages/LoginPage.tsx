@@ -70,11 +70,14 @@ const navigate = useNavigate();
             
         <div className="md:mt-8 mt-5 md:ml-40 ml-24">
           <h2 className="font-serif text-2xl md:mt-20 mt-10 md:ml-96">Login In with: </h2>
-            <button type="submit" className="bg-blue-950 text-white py-3 px-4
+            <button type="submit" className="bg-blue-600 text-white py-3 px-4
             border rounded-lg md:ml-96 mt-5 hover:bg-white hover:border-blue-700
-             hover:text-black" onClick={handleGoogleSignIn}>Google</button>
+             hover:text-black" onClick={handleGoogleSignIn}>
 
-            <button type="submit" className="bg-blue-950 text-white py-3 px-5
+              Google
+              </button>
+
+            <button type="submit" className="bg-blue-600 text-white py-3 px-5
             border rounded-lg m-2 hover:bg-white hover:border-blue-700
              hover:text-black">Apple</button>
         </div>

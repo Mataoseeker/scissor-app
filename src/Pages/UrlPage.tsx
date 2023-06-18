@@ -1,6 +1,46 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 const UrlPage = () => {
+
+    const navigate = useNavigate();
+
+  const [longUrl, setLongUrl] = useState('');
+  const [shortUrl, setShortUrl] = useState('');
+
+  const handleInputChange = (event: any) => {
+    setLongUrl(event.target.value);
+  };
+
+  const handleCancel = () => {
+    navigate('/dashboard');
+  }
+
+  const handleShortenUrl = () => {
+    
+    const apiKey = 'd7c27503eb5b1521587c964adb834a75145376ef';
+    const apiUrl = `https://api-ssl.bitly.com/v4/shorten`;
+
+    fetch(apiUrl, {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({ long_url: longUrl }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setShortUrl(data.link);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
+
     return ( 
         <div>
            <Link to="/dashboard">
@@ -20,22 +60,34 @@ const UrlPage = () => {
 
                 <input type="text" 
                 className="mt-2 md:w-1/2 w-full mx-auto border-2  border-blue-700 rounded-lg p-3" 
-                placeholder="https://www.example.com/my_long_url"/>
+                placeholder="https://www.example.com/my_long_url"
+                value={longUrl} onChange={handleInputChange}
+                />
                 </div>
+
+        {shortUrl && (
+        <div>
+          <p>Short URL:</p>
+          <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+            {shortUrl}
+          </a>
+        </div>
+      )}
                 
             <div className="flex m-3  md:flex-row flex-col md:mt-80 mt mt-44 md:float-right">
             <button 
-                className="border w-full border-slate-400 hover:bg-slate-300 text-blue-900 px-5 py-3 rounded-lg mr-10 font-serif">
+                className="border w-full border-slate-400 hover:bg-slate-300 text-blue-900 px-5 py-3 rounded-lg mr-10 font-serif" onClick={handleCancel}>
                     Cancel
                 </button>
 
                 <button 
-                className="border mt-2 w-full bg-blue-500 hover:bg-blue-400 text-white px-5 py-3 mr-5 rounded-lg font-serif">
+                className="border mt-2 w-full bg-blue-500 hover:bg-blue-400 text-white px-5 py-3 mr-5 rounded-lg font-serif" onClick={handleShortenUrl}>
                     Create
                 </button>
-            </div>
-                
+            </div>   
             </form>
+
+           
         </div>
      );
 }

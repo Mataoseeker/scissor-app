@@ -9,23 +9,31 @@ import { auth } from "../Config/Firebase";
 
 
 export const UserContext = createContext<any>(null);
-export const provider = new GoogleAuthProvider();
+// export const provider = new GoogleAuthProvider();
 
-export const signInWithGoogle = () => {
+// export const signInWithGoogle = () => {
    
-    signInWithPopup(auth, provider).then((result) => {
-        console.log(result)
-    })  
+//     signInWithPopup(auth, provider).then((result) => {
+//         console.log(result)
+//     })  
 
     
-  }
+//   }
 
 
 type value = any
 type User = any
 
 
+
 export const AuthContextProvider = ({ children }: any)  => {
+
+     const googleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+    }
+
+
     const [user, setUser] = useState<value>({
                 email: '',
                 password: '',
@@ -57,7 +65,7 @@ export const AuthContextProvider = ({ children }: any)  => {
     }, [])
     
     return (
-        <UserContext.Provider value={{createUser, user, logOut, signIn}}>
+        <UserContext.Provider value={{googleSignIn, createUser, user, logOut, signIn}}>
         {children}
         </UserContext.Provider>
     );

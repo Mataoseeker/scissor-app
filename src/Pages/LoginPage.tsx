@@ -4,10 +4,8 @@ import or from "./Images/or.png"
 import Header from "../Components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
-import { signInWithGoogle } from "../Context/AuthContext";
-
-
+import { useEffect, useState } from "react";
+// import { signInWithGoogle } from "../Context/AuthContext";
 
 type Inputs = {
     email: string,
@@ -15,13 +13,29 @@ type Inputs = {
   };
 
 
-
 const LoginPage = () => {
-  
-const { signIn } = UserAuth()
+  // const [value, setValue] = useState('')
+  const navigate = useNavigate();
+  const { signIn, googleSignIn, user } = UserAuth()
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch {
+      console.log("Something went wrong")
+    }
+  }
+
+  useEffect(() => {
+    if(user != null) {
+      navigate("/dashboard")
+    }
+  }, [user])
 
 
-const navigate = useNavigate();
+
+
+
   const [email, setEmail] = useState('')
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
@@ -52,16 +66,18 @@ const navigate = useNavigate();
    
   };
 
-  const handleGoogleSignIn = async() => {
-    try { 
-       signInWithGoogle();
-      navigate("/dashboard")
-    }
-    catch (err) {
-      console.log(err);
-    }
+  // const handleGoogleSignIn = async() => {
+  //   try { 
+  //      signInWithGoogle();
+  //     navigate("/dashboard")
+  //   }
+  //   catch (err) {
+  //     console.log(err);
+  //   }
 
-  }
+  // }
+
+ 
 
 
     return ( 

@@ -132,14 +132,14 @@ const NavlinkPage = () => {
 
     <div className="relative">
         <button
-        className="inline-flex ml-10 items-center m-3 px-3 md:px-6 py-3 text-sm font-medium
+        className="inline-flex ml-24  items-center m-3 px-3 md:px-6 py-3 text-sm font-medium
          text-slate-700 md:ml-10 border rounded-lg bg-white hover:bg-slate-100 
          "
         onClick={toggleMenu}
       >
-        {user && user.email}
+        {user?.displayName || user?.email || user?.username}
         <svg
-          className="w-5 h-5 ml-2 -mr-1 transition-transform duration-200 transform"
+          className="w-5 h-5 ml-2 -mr-1  transition-transform duration-200 transform"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"

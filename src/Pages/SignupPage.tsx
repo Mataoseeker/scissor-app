@@ -3,9 +3,8 @@ import line from "./Images/line.png"
 import or from "./Images/or.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserAuth } from "../Context/AuthContext";
-import { signInWithGoogle } from "../Context/AuthContext";
 
 type Inputs = {
     username: string,
@@ -17,9 +16,23 @@ type Inputs = {
 
 const SignupPage = () => {
 
-const { createUser } = UserAuth()
+const { createUser, googleSignIn, user } = UserAuth()
 
 const navigate = useNavigate();
+
+const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch {
+      console.log("Something went wrong")
+    }
+  }
+
+  useEffect(() => {
+    if(user != null) {
+      navigate("/dashboard")
+    }
+  }, [user])
 
 const [email, setEmail] = useState('')
 const [passwordVisible, setPasswordVisible] = useState(false);
@@ -53,31 +66,23 @@ const [retypePassword, setRetypePassword] = useState('')
       navigate("/login")
     }
     catch (err) {
-      console.log(err);
+      alert("user already exist");
+      //use toastify for the alert
     }
   };
 
-  const handleGoogleSignIn = async() => {
-    try { 
-       signInWithGoogle();
-      navigate("/dashboard")
-    }
-    catch (err) {
-      console.log(err);
-    }
 
-  }
     return ( 
         <div>
             <NavBar />
         <div>
         <div className="md:mt-5 mt-3 md:ml-40 ml-24">
         <h2 className="font-serif text-2xl md:mt-20 mt-10 md:ml-96">Sign Up with: </h2>
-            <button type="submit" className="bg-blue-950 text-white py-3 px-4
+            <button type="submit" className="bg-blue-600 text-white py-3 px-4
             border rounded-lg md:ml-96  hover:bg-white hover:border-blue-700
              hover:text-black" onClick={handleGoogleSignIn}>Google</button>
 
-            <button type="submit" className="bg-blue-950 text-white py-3 px-5
+            <button type="submit" className="bg-blue-600 text-white py-3 px-5
             border rounded-lg m-2 hover:bg-white hover:border-blue-700
              hover:text-black">Apple</button>
         </div>

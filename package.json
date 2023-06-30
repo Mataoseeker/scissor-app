@@ -54,7 +54,10 @@
   "react-router-dom": "^6.12.1",
   
     
-  "react-shorten-url": "^1.0.5"
+  "react-shorten-url": "^1.0.5",
+  
+    
+  "react-toastify": "^9.1.3"
   
   },
   
